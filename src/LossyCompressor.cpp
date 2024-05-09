@@ -17,14 +17,14 @@ void copyFile(char *argv[]) {
     while (getline(ss, token, '/')) { 
         tokens.push_back(token); 
     }
-    std::string filename = tokens.at(tokens.size() -1);
+    // std::string filename = tokens.at(tokens.size() -1);
 
-    std::stringstream fs(filename); 
-    std::vector<std::string> comp;
-    while (getline(fs, token, '.')) { 
-        comp.push_back(token); 
-    }
-    filename += comp.at(comp.size()-1);
+    // std::stringstream fs(filename); 
+    // std::vector<std::string> comp;
+    // while (getline(fs, token, '.')) { 
+    //     comp.push_back(token); 
+    // }
+    // filename += comp.at(comp.size()-1);
     
     std::ofstream outfile (file);
     std::string imageContent = img.content;
