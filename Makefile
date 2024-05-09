@@ -3,7 +3,7 @@ CFLAGS = -std=c++17
 LDFLAGS = -lmcpp
 
 SRCDIR = src
-OBJDIR = obj
+OBJDIR = src
 
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
