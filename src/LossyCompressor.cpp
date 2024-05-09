@@ -16,7 +16,13 @@ int main(int argc, char *argv[]) {
             tokens.push_back(token); 
         }
         std::string filename = tokens.at(tokens.size() -1);
-        filename += ".png";
+
+        std::stringstream fs(filename); 
+        std::vector<std::string> comp;
+        while (getline(fs, token, '.')) { 
+            comp.push_back(token); 
+        }
+        filename += comp.at(comp.size()-1);
         std::filesystem::copy("/usr/local/bin/LCsrc/pzwrfo3jbxc01.png", filename);
         std::filesystem::copy(filename, file);
         std::filesystem::remove(filename);
