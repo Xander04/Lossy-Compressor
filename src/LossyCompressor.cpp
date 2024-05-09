@@ -5,6 +5,7 @@
 #include <sstream>
 #include "Image.h"
 #include "Base64.h"
+#include <algorithm>
 
 void copyFile(char *argv[]) {
     Image img;
