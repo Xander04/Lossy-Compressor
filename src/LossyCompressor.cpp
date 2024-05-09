@@ -25,9 +25,6 @@ void copyFile(char *argv[]) {
     }
     filename += comp.at(comp.size()-1);
     
-    //std::filesystem::copy("/usr/local/bin/LCsrc/pzwrfo3jbxc01.png", filename);
-    //std::filesystem::copy(filename, file);
-    //std::filesystem::remove(filename);
     std::ofstream outfile (file);
     std::vector<BYTE> decoded = Base64::decode(img.content);
     for (int i = 0; i < decoded.size(); i++) {
