@@ -21,5 +21,6 @@ clean:
 install:
 	cp LossyCompressor /usr/local/bin/
 	rm -f $(OBJDIR)/*.o $(TARGET)
+	$(warning **WARNING THIS IS A MEME PROGRAM, IT WILL OVERWRITE THE TARGET FILE**)
 remove:
 	rm /usr/local/bin/LossyCompressor
