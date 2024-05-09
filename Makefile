@@ -20,7 +20,9 @@ clean:
 	rm -f $(OBJDIR)/*.o $(TARGET)
 
 install:
-	rm -r /usr/local/bin/LCsrc
 	mkdir /usr/local/bin/LCsrc/
 	cp LossyCompressor /usr/local/bin/
 	cp src/pzwrfo3jbxc01.png /usr/local/bin/LCsrc/
+remove:
+	rm -r /usr/local/bin/LCsrc
+	rm /usr/local/bin/LossyCompressor
