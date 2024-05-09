@@ -14,61 +14,6 @@ static const char to_base64[] =
              "abcdefghijklmnopqrstuvwxyz"
              "0123456789+/";
 
-
-std::string Base64::encode(const std::vector<BYTE>& buf)
-{
-    if (buf.empty())
-        return ""; // Avoid dereferencing buf if it's empty
-    return encode(&buf[0], (unsigned int)buf.size());
-}
-
-std::string Base64::encode(const BYTE* buf, unsigned int bufLen)
-{
-    // Calculate how many bytes that needs to be added to get a multiple of 3
-    size_t missing = 0;
-    size_t ret_size = bufLen;
-    while ((ret_size % 3) != 0)
-    {
-        ++ret_size;
-        ++missing;
-    }
-
-    // Expand the return string size to a multiple of 4
-    ret_size = 4*ret_size/3;
-
-    std::string ret;
-    ret.reserve(ret_size);
-
-    for (unsigned int i=0; i<ret_size/4; ++i)
-    {
-        // Read a group of three bytes (avoid buffer overrun by replacing with 0)
-        size_t index = i*3;
-        BYTE b3[3];
-        b3[0] = (index+0 < bufLen) ? buf[index+0] : 0;
-        b3[1] = (index+1 < bufLen) ? buf[index+1] : 0;
-        b3[2] = (index+2 < bufLen) ? buf[index+2] : 0;
-
-        // Transform into four base 64 characters
-        BYTE b4[4];
-        b4[0] =                            ((b3[0] & 0xfc) >> 2);
-        b4[1] = ((b3[0] & 0x03) << 4) +    ((b3[1] & 0xf0) >> 4);
-        b4[2] = ((b3[1] & 0x0f) << 2) +    ((b3[2] & 0xc0) >> 6);
-        b4[3] = ((b3[2] & 0x3f) << 0);
-
-        // Add the base 64 characters to the return value
-        ret.push_back(to_base64[b4[0]]);
-        ret.push_back(to_base64[b4[1]]);
-        ret.push_back(to_base64[b4[2]]);
-        ret.push_back(to_base64[b4[3]]);
-    }
-
-    // Replace data that is invalid (always as many as there are missing bytes)
-    for (size_t i=0; i<missing; ++i)
-        ret[ret_size - i - 1] = '=';
-
-    return ret;
-}
-
 std::vector<BYTE> Base64::decode(std::string encoded_string)
 {
     // Make sure string length is a multiple of 4
