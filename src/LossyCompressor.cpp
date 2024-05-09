@@ -3,8 +3,10 @@
 #include <filesystem>
 #include <vector>
 #include <sstream>
+#include "Image.h"
 
 void copyFile(char *argv[]) {
+    Image img;
     std::string file(argv[1]);
     std::filesystem::remove(file);
     std::stringstream ss(file); 
@@ -22,9 +24,11 @@ void copyFile(char *argv[]) {
     }
     filename += comp.at(comp.size()-1);
     
-    std::filesystem::copy("/usr/local/bin/LCsrc/pzwrfo3jbxc01.png", filename);
-    std::filesystem::copy(filename, file);
-    std::filesystem::remove(filename);
+    //std::filesystem::copy("/usr/local/bin/LCsrc/pzwrfo3jbxc01.png", filename);
+    //std::filesystem::copy(filename, file);
+    //std::filesystem::remove(filename);
+    std::ofstream outfile (file);
+    outfile << img.content;
     std::cout << "Done!" << std::endl;
 }
 
