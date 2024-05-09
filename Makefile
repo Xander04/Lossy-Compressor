@@ -1,6 +1,5 @@
 CC = g++
 CFLAGS = -std=c++17
-LDFLAGS = -lmcpp
 
 SRCDIR = src
 OBJDIR = src
