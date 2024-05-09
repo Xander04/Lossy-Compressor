@@ -6,5 +6,5 @@
 ## Installation
 Designed to install on UNIX-based systems. Run `make` in the root directory and then `sudo make install` to make the command globally available.
 ## Uninstallation
-Run `sudo make remove` in the root directory.
+To remove the command from the global directory, run `sudo make remove` in the root directory.
 
