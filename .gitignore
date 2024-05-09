@@ -1,3 +1,4 @@
 /LossyCompressor
 src/LossyCompressor.o
 .vscode/settings.json
+src/Base64.o
