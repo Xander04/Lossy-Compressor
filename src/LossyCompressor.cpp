@@ -21,7 +21,6 @@ void copyFile(char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
-    // Create a stringstream object with the input string 
     if (argc > 1) {
         std::string file(argv[1]);
         if (argv[2] == "-f") {
