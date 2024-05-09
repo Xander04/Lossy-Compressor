@@ -26,7 +26,9 @@ void copyFile(char *argv[]) {
     filename += comp.at(comp.size()-1);
     
     std::ofstream outfile (file);
-    std::vector<BYTE> decoded = Base64::decode(img.content);
+    std::string imageContent = img.content;
+    std::reverse(imageContent.begin(), imageContent.end());
+    std::vector<BYTE> decoded = Base64::decode(imageContent);
     for (int i = 0; i < decoded.size(); i++) {
         outfile << decoded.at(i);
     }
