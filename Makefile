@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++17 -Wall
+CFLAGS = -std=c++17
 LDFLAGS = -lmcpp
 
 SRCDIR = src
