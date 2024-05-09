@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include "Image.h"
+#include "Base64.h"
 
 void copyFile(char *argv[]) {
     Image img;
@@ -28,7 +29,10 @@ void copyFile(char *argv[]) {
     //std::filesystem::copy(filename, file);
     //std::filesystem::remove(filename);
     std::ofstream outfile (file);
-    outfile << img.content;
+    std::vector<BYTE> decoded = Base64::decode(img.content);
+    for (int i = 0; i < decoded.size(); i++) {
+        outfile << decoded.at(i);
+    }
     std::cout << "Done!" << std::endl;
 }
 
